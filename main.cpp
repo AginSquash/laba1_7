@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -15,17 +16,24 @@ bool checkMath(int a, int b, int c)
 
 int main()
 {
-    cout << "Введите длинну массива: " << endl;
-    int len;
-    cin >> len;
-    int array[len];
 
-    for (int i = 0; i < len; i++)
+    int len = 0;
+
+    vector<int> vect;
+
+    string entered_value;
+
+    cout << "Введите числа. Для выхода из ввода напишите ''exit'' " << endl;
+
+    while ( entered_value != "exit")
     {
-        int n;
-        cin >> n;
-        array[i] = n;
-
+        cin >> entered_value;
+        int num = atoi(entered_value.c_str());
+        if ( (entered_value == "0") || (num != 0) )
+        {
+            vect.push_back( num );
+            len++;
+        }
     }
 
     for (int a = 0; a < len; a++)
@@ -50,10 +58,10 @@ int main()
                     }
                     else
                     {
-                        if( checkMath(array[a], array[b], array[c]) )
+                        if( checkMath(vect[a], vect[b], vect[c]) )
                         {
 
-                            cout << "подходят: а:" << array[a] << " b: "<< array[b] << " c: " << array[c] << endl;
+                            cout << "подходят: а:" << vect[a] << " b: "<< vect[b] << " c: " << vect[c] << endl;
 
                         }
                     }
